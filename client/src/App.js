@@ -1,9 +1,15 @@
 import "./App.css"
+import Header from "./components/Header"
 
 function App() {
   return (
     <div className="app">
-      <h1>Lets build linkedin clone</h1>
+      {/* Header */}
+      <Header />
+      {/* App Body */}
+      {/* Sidebar */}
+      {/* Feed */}
+      {/* Widgets */}
     </div>
   )
 }
