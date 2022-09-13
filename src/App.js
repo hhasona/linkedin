@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 import Feed from "./components/Feed"
-// import Widgets from "./components/Widgets"
+import Widgets from "./components/Widgets"
 import { useSelector } from "react-redux"
 import { selectUser } from "./features/userSlice"
 import Login from "./components/Login"
@@ -46,7 +46,7 @@ function App() {
           <Sidebar />
           <Feed />
           {/* <Sidebar /> */}
-          {/* <Widgets /> */}
+          <Widgets />
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, forwardRef } from "react"
 import { Avatar } from "@mui/material"
 import InputOption from "./InputOption"
-
 import {
   ChatOutlined,
   SendOutlined,
@@ -9,9 +8,9 @@ import {
   ThumbUpAltOutlined,
 } from "@mui/icons-material"
 
-function Post({ name, description, message, photoUrl }) {
+const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
   return (
-    <div className="post bg-white p-4 mb-2.5 rounded-lg">
+    <div ref={ref} className="post bg-white p-4 mb-2.5 rounded-lg">
       <div className="post_header flex mb-2.5">
         <Avatar src={photoUrl}>{name[0].toUpperCase()}</Avatar>
         <div className="post_info ml-2.5">
@@ -35,6 +34,5 @@ function Post({ name, description, message, photoUrl }) {
       `}</style>
     </div>
   )
-}
-
+})
 export default Post
