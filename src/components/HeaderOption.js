@@ -13,7 +13,7 @@ function HeaderOption({ Icon, title, avatar, onClick }) {
       {avatar && (
         <Avatar
           className="headerOption__icon text-sm h-6 w-6"
-          src={user?.photoURL}
+          src={user?.photoUrl}
         >
           {user?.email[0].toUpperCase()}
         </Avatar>

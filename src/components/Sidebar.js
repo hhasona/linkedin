@@ -11,7 +11,6 @@ function Sidebar() {
   )
 
   const user = useSelector(selectUser)
-
   return (
     <div className="sidebar flex-[0.2] sticky top-20 rounded text-center h-fit">
       <div className="sidebar_top flex flex-col items-center border-2 border-b-0 pb-2.5 bg-[white]">
@@ -21,10 +20,10 @@ function Sidebar() {
           alt=""
         />
         <Avatar
-          src={user.photoURL}
+          src={user.photoUrl}
           className="sidebar_avatar mb-2.5 h-20 w-20 text-[40px]"
         >
-          {user.email[0].toUpperCase()}
+          {user.email[0]}
         </Avatar>
         <h2 className="font-bold">{user.displayName}</h2>
         <h4>{user.email}</h4>
