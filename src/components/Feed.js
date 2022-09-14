@@ -41,7 +41,7 @@ function Feed() {
   }
 
   return (
-    <div className="flex-[0.6] mx-5">
+    <div className="lg:flex-[0.6] lg:mx-5">
       <div className="feed_inputContainer bg-white p-2.5 pb-5 rounded-lg mb-5">
         <div className="feed_input border-2 rounded-[50px] flex p-2.5 text-[gray] pl-4 ">
           <CreateIcon />

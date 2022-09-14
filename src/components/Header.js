@@ -12,9 +12,10 @@ import { logout } from "../features/userSlice"
 import { useSelector } from "react-redux"
 import { loading, success, failure, selectView } from "../features/viewSlice"
 import Loading from "./Loading"
+import { FaBars, FaTimes } from "react-icons/fa"
+
 function Header() {
   const view = useSelector(selectView)
-
   const dispatch = useDispatch()
   const logoutOfApp = () => {
     dispatch(loading())
@@ -26,6 +27,8 @@ function Header() {
       dispatch(failure())
     }
   }
+
+  const [showLinks, setShowLinks] = React.useState(false)
   if (view.isLoading) {
     return <Loading />
   }
@@ -47,13 +50,48 @@ function Header() {
         </div>
       </div>
       <div className="header_right flex ">
-        <HeaderOption Icon={HomeIcon} title={"Home"} />
-        <HeaderOption Icon={PeopleIcon} title={"My Network"} />
-        <HeaderOption Icon={BusinessCenterIcon} title={"Jobs"} />
-        <HeaderOption Icon={ChatIcon} title={"Messaging"} />
-        <HeaderOption Icon={NotificationsIcon} title={"Notifications"} />
-        <HeaderOption avatar={true} title={"me"} onClick={logoutOfApp} />
+        <ul className="hidden lg:flex ">
+          <HeaderOption Icon={HomeIcon} title={"Home"} path="/" />
+          <HeaderOption
+            Icon={PeopleIcon}
+            title={"My Network"}
+            path="/newtwork"
+          />
+          <HeaderOption Icon={BusinessCenterIcon} title={"Jobs"} path="/jobs" />
+          <HeaderOption Icon={ChatIcon} title={"Messaging"} path="/message" />
+          <HeaderOption
+            Icon={NotificationsIcon}
+            title={"Notifications"}
+            path="notifications"
+          />
+          <HeaderOption avatar={true} title={"me"} onClick={logoutOfApp} />
+        </ul>
       </div>
+      <div
+        onClick={() => setShowLinks(!showLinks)}
+        className="lg:hidden cursor-pointer pr-4 z-40 text-gray-500"
+      >
+        {showLinks ? <FaTimes size={30} /> : <FaBars size={30} />}
+      </div>
+
+      {showLinks && (
+        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+          <HeaderOption Icon={HomeIcon} title={"Home"} path="/" />
+          <HeaderOption
+            Icon={PeopleIcon}
+            title={"My Network"}
+            path="/newtwork"
+          />
+          <HeaderOption Icon={BusinessCenterIcon} title={"Jobs"} path="/jobs" />
+          <HeaderOption Icon={ChatIcon} title={"Messaging"} path="/message" />
+          <HeaderOption
+            Icon={NotificationsIcon}
+            title={"Notifications"}
+            path="notifications"
+          />
+          <HeaderOption avatar={true} title={"me"} onClick={logoutOfApp} />
+        </ul>
+      )}
     </div>
   )
 }

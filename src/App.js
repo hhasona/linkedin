@@ -11,11 +11,14 @@ import Login from "./components/Login"
 import { useDispatch } from "react-redux"
 import { login, logout } from "./features/userSlice"
 import { auth } from "./firebase"
+import { selectView, success, loading } from "./features/viewSlice"
+
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   useEffect(() => {
+    dispatch(loading())
     auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         dispatch(
@@ -26,9 +29,11 @@ function App() {
             photoUrl: userAuth.photoURL,
           })
         )
+        dispatch(success())
         navigate("/")
       } else {
         dispatch(logout())
+        dispatch(success())
       }
     })
   }, [])
@@ -36,7 +41,7 @@ function App() {
   const user = useSelector(selectUser)
 
   return (
-    <div className="flex flex-col h-screen bg-[#f3f2ef] items-center">
+    <div className="flex flex-col h-full bg-[#f3f2ef] items-center">
       {user && <Header />}
       <Routes>
         {!user ? (
@@ -48,7 +53,7 @@ function App() {
           <Route
             path="/"
             element={
-              <div className="flex w-full max-w-6xl mt-8 mx-5">
+              <div className="lg:flex-row flex flex-col w-full max-w-6xl mt-8 mx-5">
                 <Sidebar />
                 <Feed />
                 <Widgets />

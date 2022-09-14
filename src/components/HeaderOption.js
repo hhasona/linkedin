@@ -2,11 +2,13 @@ import React from "react"
 import Avatar from "@mui/material/Avatar"
 import { useSelector } from "react-redux"
 import { selectUser } from "../features/userSlice"
-function HeaderOption({ Icon, title, avatar, onClick }) {
+import { useNavigate } from "react-router-dom"
+function HeaderOption({ Icon, title, avatar, onClick, path }) {
+  const navigate = useNavigate()
   const user = useSelector(selectUser)
   return (
     <div
-      onClick={onClick}
+      onClick={onClick ? onClick : () => navigate(path)}
       className="headerOption flex  flex-col items-center mr-7 text-[gray] cursor-pointer hover:text-[black]"
     >
       {Icon && <Icon className="headerOption__icon h-6 w-6" />}

@@ -12,7 +12,7 @@ function Sidebar() {
 
   const user = useSelector(selectUser)
   return (
-    <div className="sidebar flex-[0.2] sticky top-20 rounded text-center h-fit">
+    <div className="sidebar lg:flex-[0.2] lg:sticky top-20 rounded text-center h-fit">
       <div className="sidebar_top flex flex-col items-center border-2 border-b-0 pb-2.5 bg-[white]">
         <img
           className="sidebar_photo w-full object-cover h-20"
